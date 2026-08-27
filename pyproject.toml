@@ -1,0 +1,9 @@
+[project]
+name = "cooklang-mcp-server"
+version = "0.1.0"
+description = "FastMCP interface to a CookCLI recipe server"
+requires-python = ">=3.10"
+dependencies = [
+    "fastmcp>=3.0",
+    "httpx>=0.27",
+]
