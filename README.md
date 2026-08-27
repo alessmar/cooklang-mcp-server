@@ -46,27 +46,15 @@ file in the recipe directory (or Docker volume).
 
   or, with CookCLI installed locally, `cook server ./my-recipes`.
 
-## Setup
-
-```bash
-uv sync   # reads pyproject.toml, creates .venv
-```
-
-Run standalone (for a quick check):
-
-```bash
-COOKLANG_SERVER_URL=http://localhost:9080 uv run python server.py
-```
-
-`COOKLANG_SERVER_URL` defaults to `http://localhost:9080`.
-
 ## Register with Claude Code
 
+No clone needed. `uvx` fetches, builds and caches the server straight from this
+repo:
+
 ```bash
-claude mcp add cooklang --scope local \
+claude mcp add cooklang \
   --env COOKLANG_SERVER_URL=http://localhost:9080 \
-  -- uv run --project /path/to/cooklang-mcp-server \
-  python /path/to/cooklang-mcp-server/server.py
+  -- uvx --from git+https://github.com/alessmar/cooklang-mcp-server cooklang-mcp-server
 ```
 
 Or in `.mcp.json` / `~/.claude.json`:
@@ -75,16 +63,26 @@ Or in `.mcp.json` / `~/.claude.json`:
 {
   "mcpServers": {
     "cooklang": {
-      "command": "uv",
-      "args": ["run", "--project", "/path/to/cooklang-mcp-server",
-               "python", "/path/to/cooklang-mcp-server/server.py"],
+      "command": "uvx",
+      "args": ["--from", "git+https://github.com/alessmar/cooklang-mcp-server",
+               "cooklang-mcp-server"],
       "env": { "COOKLANG_SERVER_URL": "http://localhost:9080" }
     }
   }
 }
 ```
 
-Adjust the paths if you cloned the repo elsewhere.
+`COOKLANG_SERVER_URL` defaults to `http://localhost:9080`. Pin a version by
+appending `@<tag>` to the git URL, e.g. `...cooklang-mcp-server@v0.1.0`.
+
+## Local development
+
+```bash
+git clone https://github.com/alessmar/cooklang-mcp-server
+cd cooklang-mcp-server
+uv sync
+COOKLANG_SERVER_URL=http://localhost:9080 uv run cooklang-mcp-server
+```
 
 ## Notes
 

@@ -91,6 +91,10 @@ def collection_stats() -> dict:
     return r.json()
 
 
-if __name__ == "__main__":
+def main() -> None:
     # stdio transport: what a local coding agent (Claude Code, etc.) expects.
     mcp.run()
+
+
+if __name__ == "__main__":
+    main()
