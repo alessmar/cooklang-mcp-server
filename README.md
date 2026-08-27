@@ -14,8 +14,8 @@ over the CookCLI HTTP API.
 ## Do you need this?
 
 Use this server when the recipes are reached **over HTTP**: a `cook server`
-running on another machine, in a container, or on a NAS, or an MCP client such as
-Claude Desktop that has no shell access.
+running on another machine or on a NAS, or an MCP client such as Claude Desktop
+that has no shell access.
 
 If your recipes are local files and the agent can run commands (Claude Code,
 Codex), the official
