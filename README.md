@@ -13,12 +13,25 @@ over the CookCLI HTTP API.
 
 ## How it works
 
+There are three pieces in a chain:
+
 ```
-coding agent  <--stdio/MCP-->  server.py  <--HTTP-->  cook server  <-->  .cook files
+coding agent  (Claude, etc.)
+    │  speaks MCP over stdio, e.g. calls the tool read_recipe("Dolci/bunet")
+    ▼
+cooklang-mcp-server  (this project)
+    │  translates each tool call into one HTTP request, e.g. GET /api/recipes/Dolci/bunet
+    ▼
+cook server  (CookCLI's built-in HTTP API)
+    │  reads and writes the files
+    ▼
+.cook recipe files  on disk
 ```
 
-`server.py` is a thin wrapper: each MCP tool maps to one CookCLI HTTP endpoint.
-State lives entirely in the CookCLI server and its recipe directory.
+This server holds no state of its own: it is a thin adapter between the MCP
+protocol the agent speaks and the HTTP API CookCLI exposes. Every recipe lives
+in CookCLI's recipe directory, and results flow back up the same chain to the
+agent.
 
 ## Tools
 
