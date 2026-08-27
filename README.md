@@ -1,5 +1,10 @@
 # cooklang-mcp-server
 
+[![MCP](https://img.shields.io/badge/MCP-server-0a7ea4?logo=modelcontextprotocol&logoColor=white)](https://modelcontextprotocol.io)
+[![Version](https://img.shields.io/github/v/tag/alessmar/cooklang-mcp-server?label=version&color=blue)](https://github.com/alessmar/cooklang-mcp-server/tags)
+[![Python](https://img.shields.io/badge/python-3.10%2B-blue?logo=python&logoColor=white)](https://www.python.org/)
+[![License: MIT](https://img.shields.io/github/license/alessmar/cooklang-mcp-server?color=blue)](LICENSE)
+
 A small [FastMCP](https://gofastmcp.com) server that exposes the
 [CookCLI](https://cooklang.org/cli/) recipe server (`cook server`, as shipped in
 `ghcr.io/cooklang/cookcli`) to a coding agent as MCP tools. With it, an agent can
