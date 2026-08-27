@@ -11,6 +11,18 @@ A small [FastMCP](https://gofastmcp.com) server that exposes the
 browse, read, write, delete and search [Cooklang](https://cooklang.org) recipes
 over the CookCLI HTTP API.
 
+## Do you need this?
+
+Use this server when the recipes are reached **over HTTP** (a `cook server` on
+another machine), or when the MCP client has no shell access, such as Claude
+Desktop.
+
+If your recipes are local files and the agent can run commands (Claude Code,
+Codex), the official
+[cooklang-skills](https://github.com/cooklang/cooklang-skills) plugin is the
+better fit. It drives the `cook` CLI directly and covers more ground: meal
+planning, pantry tracking, aisle-grouped shopping lists, exports.
+
 ## How it works
 
 Each MCP tool maps 1:1 to a CookCLI HTTP endpoint (`read_recipe` -> `GET
